@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sawdax | Coming Soon</title>
 <meta name="description" content="The new Sawdax rental website is coming soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,7 @@ body{font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;backgrou
 @keyframes gone{to{visibility:hidden}}
 
 /* FIX: page now fits the screen height and scrolls if the window is very short */
-.stage{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto auto;padding:clamp(20px,3vw,36px) var(--pad) 20px}
+.stage{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr auto auto;padding:clamp(20px,3vw,36px) var(--pad) 20px}
 nav{display:flex;justify-content:space-between;align-items:center}
 .plate{background:#fff;padding:10px 34px;clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);animation:fadeIn .8s .9s backwards}
 .plate img{display:block;height:clamp(34px,4.4vw,48px);width:auto}
@@ -59,6 +59,35 @@ footer{font-size:14px;color:rgba(255,255,255,.6);padding-top:18px;text-align:cen
 
 @media(max-width:700px){nav{flex-direction:column;align-items:flex-start;gap:16px}.live{font-size:14px}.plate{padding:9px 26px}.line.out .ch{-webkit-text-stroke-width:1.5px}}
 @media(prefers-reduced-motion:reduce){.wipe{display:none}.ch,.plate,.live,.hero p,.belt{animation:none}.belt div{animation:none}}
+
+/* ---- Mobile responsive ---- */
+@media(max-width:700px){
+  :root{--pad:22px}
+  .stage{padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom))}
+  h1{font-size:min(23vw,22vh);transform:none}
+  .hero{padding:16px 0}
+  .hero p{font-size:16px;max-width:32ch}
+  .belt{padding:11px 0}
+  .belt span{font-size:22px;padding-right:28px}
+  .belt span::after{margin-left:28px;width:11px;height:11px}
+  footer{font-size:13px;padding-top:14px}
+}
+@media(max-width:380px){
+  .plate{padding:8px 20px}
+  .plate img{height:30px}
+  .live{font-size:13px}
+  h1{font-size:min(22vw,20vh)}
+}
+/* phones held sideways */
+@media(max-height:520px) and (orientation:landscape){
+  .stage{min-height:0;padding-top:14px}
+  nav{flex-direction:row;align-items:center}
+  h1{font-size:min(14vw,26vh)}
+  .hero{padding:8px 0}
+  .hero p{margin-top:10px;font-size:15px}
+  .belt{padding:8px 0}
+  .belt span{font-size:20px}
+}
 </style>
 </head>
 <body>
